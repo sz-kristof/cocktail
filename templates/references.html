@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>References</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: black;
+            color: #ff7799;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+        }
+        .profile img {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 150px;
+            height: 150px;
+        }
+        .results {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="content">
+        <div class="profile">
+            <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Photo">
+            <div class="results">
+                <h2>Competition Results</h2>
+                <ul>
+                    <li>1st Place - International Cocktail Competition 2023</li>
+                    <li>2nd Place - National Bartender Awards 2022</li>
+                    <li>3rd Place - Regional Mixology Contest 2021</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

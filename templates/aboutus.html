@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .crew-member {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            padding: 20px;
+        }
+        .crew-member img {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 100px;
+            height: 100px;
+        }
+        .crew-member .description {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="content">
+        <h1>About Us</h1>
+        <div class="crew-member">
+            <img src="{{ url_for('static', filename='images/crew1.jpg') }}" alt="Crew Member Photo">
+            <div class="description">
+                <h2>Daniel Süle</h2>
+                <p>Role: Founder & Head Mixologist</p>
+                <p>John founded Sip Season with a passion for creating unique and delicious cocktails. His goal is to innovate and bring new flavors to the cocktail scene.</p>
+            </div>
+        </div>
+        <div class="crew-member">
+            <img src="{{ url_for('static', filename='images/crew2.jpg') }}" alt="Crew Member Photo">
+            <div class="description">
+                <h2>David Hauszgenusz</h2>
+                <p>Role: Marketing Director</p>
+                <p>Jane is responsible for all our marketing strategies. She loves promoting our brand and connecting with our audience through creative campaigns.</p>
+            </div>
+        </div>
+        <div class="crew-member">
+            <img src="{{ url_for('static', filename='images/crew3.jpg') }}" alt="Crew Member Photo">
+            <div class="description">
+                <h2>Alexander Schiester</h2>
+                <p>Tester</p>
+                <p>Bob ensures that everything runs smoothly behind the scenes. His goal is to maintain high standards in our operations and customer service.</p>
+            </div>
+        </div>
+        <div class="crew-member">
+            <img src="{{ url_for('static', filename='images/crew3.jpg') }}" alt="Crew Member Photo">
+            <div class="description">
+                <h2>Zoltan Jancsar</h2>
+                <p>Tester</p>
+                <p>Bob ensures that everything runs smoothly behind the scenes. His goal is to maintain high standards in our operations and customer service.</p>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

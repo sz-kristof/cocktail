@@ -1,0 +1,167 @@
+<header class="top-bar">
+    <a href="{{ url_for('home') }}" class="logo">Sip Season</a>
+    <div class="tagline">We're sipping the good life</div>
+    <nav>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('products') }}">Products</a>
+                <a href="{{ url_for('aboutus') }}">About Us</a>
+                <a href="{{ url_for('references') }}">References</a>
+                <a href="{{ url_for('home') }}">Contact</a>
+                <div class="flags">
+                    <button class="flag-btn" aria-label="UK" title="UK"><img src="{{ url_for('static', filename='images/uk_flag.jpg') }}" alt="UK Flag"></button>
+                    <span class="divider">|</span>
+                    <button class="flag-btn" aria-label="Germany" title="Germany"><img src="{{ url_for('static', filename='images/germany_flag.png') }}" alt="Germany Flag"></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background-color: black;
+        color: #ff7799;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ff7799;
+        color: #fff;
+        padding: 10px 20px;
+    }
+
+    .top-bar .logo {
+        font-size: 24px;
+        margin-right: auto;
+        color: black;
+    }
+
+    .top-bar .tagline {
+        font-size: 18px;
+        text-align: center;
+        flex: 2;
+        margin-left: 350px;
+        color: black;
+    }
+
+    .top-bar nav {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .top-bar nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    .top-bar nav a:hover {
+        text-decoration: underline;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: #ff7799;
+        color: black;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .dropbtn:hover {
+        background-color: #ff5566;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: black;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        right: 0;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a, .dropdown-content .flags {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dropdown-content a:hover, .dropdown-content .flags:hover {
+        background-color: #ff7799;
+        color: white;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+        margin: 20px;
+    }
+
+    .profile img {
+        border-radius: 50%;
+        margin-right: 20px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .results {
+        font-size: 18px;
+    }
+
+    .flags {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .flag-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0 5px;
+    }
+
+    .flag-btn img {
+        width: 30px;
+        height: 20px;
+    }
+
+    .flag-btn:hover {
+        background-color: #ff7799;
+        border-radius: 5px;
+    }
+
+    .divider {
+        color: white;
+        padding: 0 5px;
+        font-size: 20px;
+    }
+
+</style>

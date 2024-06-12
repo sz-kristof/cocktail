@@ -4,39 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+        .content {
+            padding: 20px;
+        }
         .product-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
         .product-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
+            position: relative;
+            background-color: #ff7799;
+            border: 1px solid black;
             border-radius: 10px;
-            width: 80%;
-            max-width: 600px;
-            background-color: white;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .product-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
         }
         .product-description {
-            margin: 10px 0;
-            text-align: center;
+            padding: 20px;
+            text-align: left;
+            color: black;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .product-description h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: black;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .product-description p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: black;
         }
         .order-btn {
-            background-color: #ff7799;
-            color: white;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: black;
+            color: #ff7799;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -44,7 +71,19 @@
             transition: background-color 0.3s;
         }
         .order-btn:hover {
-            background-color: #ff5566;
+            background-color: #333;
+        }
+        .product-item:hover .order-btn {
+            display: block;
+        }
+        .product-image-container {
+            position: relative;
+        }
+        .product-image-container:hover img {
+            opacity: 0.7;
+        }
+        .product-image-container:hover .order-btn {
+            display: block;
         }
     </style>
 </head>
@@ -54,20 +93,44 @@
         <h1>Our Products</h1>
         <div class="product-list">
             <div class="product-item">
-                <img src="{{ url_for('static', filename='images/cocktail2.jpg') }}" alt="Cocktail Name">
+                <div class="product-image-container">
+                    <img src="{{ url_for('static', filename='images/cocktail2.jpg') }}" alt="Hot or Not?! - O.b.G. Edition">
+                    <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
+                </div>
                 <div class="product-description">
                     <h2>Hot or Not?! - O.b.G. Edition</h2>
                     <p>This is a special one! Our podium cocktail at the Austrian Bartender Awards. Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Vodka, Vermout and our Sangria-Blend with Cherry, Strawberry, Spices and much more... much more love! ...pssst, stock is selling out fast and will never be produced again in this form, so hurry and get yourself any of our Old but Gold cocktails.</p>
                 </div>
-                <a href="{{ url_for('home') }}#contact" class="order-btn">To Order It</a>
             </div>
             <div class="product-item">
-                <img src="{{ url_for('static', filename='images/cocktail5.jpg') }}" alt="Cocktail Name">
-                <div class="product-description">
-                    <h2>Cocktail Name</h2>
-                    <p>Brief description of the cocktail.</p>
+                <div class="product-image-container">
+                    <img src="{{ url_for('static', filename='images/cocktail3.jpg') }}" alt="What the Melon?! - O.b.G. Edition">
+                    <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
                 </div>
-                <a href="{{ url_for('home') }}#contact" class="order-btn">To Order It</a>
+                <div class="product-description">
+                    <h2>What the Melon?! - O.b.G. Edition</h2>
+                    <p>Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Vodka, Watermelon, Lime, Mint.</p>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-image-container">
+                    <img src="{{ url_for('static', filename='images/cocktail4.jpg') }}" alt="Horny Bae - O.b.G. Edition">
+                    <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
+                </div>
+                <div class="product-description">
+                    <h2>Horny Bae - O.b.G. Edition</h2>
+                    <p>Old brand. Old logo. Old bottle. The same popular taste and characteristics of: White Rum, Cucumber, Pineapple, Almond, Melon.</p>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-image-container">
+                    <img src="{{ url_for('static', filename='images/cocktail5.jpg') }}" alt="Wet Ginger - O.b.G. Edition">
+                    <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
+                </div>
+                <div class="product-description">
+                    <h2>Wet Ginger - O.b.G. Edition</h2>
+                    <p>Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Gin, Ginger, Lemon, Cucumber, Pink Pepper.</p>
+                </div>
             </div>
             <!-- Additional product items can be added here -->
         </div>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            color: black;
+        }
+        .contact-section {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            background-color: #ff7799;
+            text-align: center;
+        }
+        .contact-section h2 {
+            margin-bottom: 20px;
+        }
+        .contact-section form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-section input[type="email"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .contact-section button {
+            background-color: #ff7799;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-section button:hover {
+            background-color: #ff5566;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: black;
+        }
+        .social-icons a:hover {
+            color: #ff5566;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="content">
+        <h1>Contact Us</h1>
+        <div class="contact-info">
+            <div class="contact-section">
+                <h2>Contact Information</h2>
+                <p>Email: info@sipseason.com</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Address: 123 Cocktail Lane, Bartender City, FL 12345</p>
+            </div>
+            <div class="contact-section">
+                <h2>Order Now</h2>
+                <form action="#" method="post">
+                    <input type="email" name="order-email" placeholder="Enter your email for orders" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="contact-section">
+                <h2>Subscribe to Our Newsletter</h2>
+                <form action="#" method="post">
+                    <input type="email" name="newsletter-email" placeholder="Enter your email to subscribe" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="contact-section">
+                <h2>Follow Us</h2>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" aria-label="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/sipseasoncocktails/" target="_blank" aria-label="Instagram" title="Instagram"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

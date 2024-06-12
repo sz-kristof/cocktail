@@ -56,6 +56,14 @@
             line-height: 1.5;
             color: black;
         }
+        .product-description a {
+            color: blue;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .product-description a:hover {
+            text-decoration: underline;
+        }
         .order-btn {
             display: none;
             position: absolute;
@@ -92,47 +100,18 @@
     <div class="content">
         <h1>Our Products</h1>
         <div class="product-list">
+            {% for product_id, product in products.items() %}
             <div class="product-item">
                 <div class="product-image-container">
-                    <img src="{{ url_for('static', filename='images/cocktail2.jpg') }}" alt="Hot or Not?! - O.b.G. Edition">
+                    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
                     <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
                 </div>
                 <div class="product-description">
-                    <h2>Hot or Not?! - O.b.G. Edition</h2>
-                    <p>This is a special one! Our podium cocktail at the Austrian Bartender Awards. Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Vodka, Vermout and our Sangria-Blend with Cherry, Strawberry, Spices and much more... much more love! ...pssst, stock is selling out fast and will never be produced again in this form, so hurry and get yourself any of our Old but Gold cocktails.</p>
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.description[:100] }}... <a href="{{ url_for('product_detail', product_id=product_id) }}">Read more</a></p>
                 </div>
             </div>
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="{{ url_for('static', filename='images/cocktail3.jpg') }}" alt="What the Melon?! - O.b.G. Edition">
-                    <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
-                </div>
-                <div class="product-description">
-                    <h2>What the Melon?! - O.b.G. Edition</h2>
-                    <p>Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Vodka, Watermelon, Lime, Mint.</p>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="{{ url_for('static', filename='images/cocktail4.jpg') }}" alt="Horny Bae - O.b.G. Edition">
-                    <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
-                </div>
-                <div class="product-description">
-                    <h2>Horny Bae - O.b.G. Edition</h2>
-                    <p>Old brand. Old logo. Old bottle. The same popular taste and characteristics of: White Rum, Cucumber, Pineapple, Almond, Melon.</p>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="{{ url_for('static', filename='images/cocktail5.jpg') }}" alt="Wet Ginger - O.b.G. Edition">
-                    <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
-                </div>
-                <div class="product-description">
-                    <h2>Wet Ginger - O.b.G. Edition</h2>
-                    <p>Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Gin, Ginger, Lemon, Cucumber, Pink Pepper.</p>
-                </div>
-            </div>
-            <!-- Additional product items can be added here -->
+            {% endfor %}
         </div>
     </div>
     {% include 'footer.html' %}

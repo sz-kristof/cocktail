@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+        .content {
+            padding: 20px;
+        }
+        .product-detail {
+            background-color: #ff7799;
+            border: 1px solid black;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 20px;
+            text-align: left;
+            color: black;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .product-detail img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product-detail h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: black;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .product-detail p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: black;
+        }
+        .order-btn {
+            background-color: black;
+            color: #ff7799;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .order-btn:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="content">
+        <div class="product-detail">
+            <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

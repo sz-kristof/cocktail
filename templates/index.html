@@ -7,26 +7,57 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+        .content {
+            padding-top: 70px;
+            color: #ff7799;
+            display: none; /* Initially hide the content */
+        }
         .hover-image {
             display: none;
         }
         .product .hover-image:first-of-type {
             display: block;
         }
-        .content {
-            padding-top: 70px;
-            color: #ff7799;
-        }
         .product-info {
             color: #ff7799;
-            font-family: "Shadows Into Light", sans-serif;
+            font-family: 'Shadows Into Light', sans-serif;
         }
         .product-title {
             color: #ff7799;
+            font-family: 'Shadows Into Light', sans-serif;
+        }
+        .fade-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            background-color: #ff7799;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+        .fade-logo.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: visibility 0s 1s, opacity 1s ease-in-out;
         }
     </style>
 </head>
 <body>
+    <div class="fade-logo" id="fade-logo">
+        <img src="{{ url_for('static', filename='images/cocktail.jpg') }}" alt="Logo">
+    </div>
     {% include 'header.html' %}
     <div class="content">
         <div class="product">
@@ -35,26 +66,60 @@
             <div class="product-description">
                 <h1 class="product-title">Hot or Not?! - O.b.G. Edition</h1>
                 <p class="product-info">OLD BUT GOLD EDITION 
-
                     This is a special one! Our podium cocktail at the Austrian Bartender Awards.
-                    
-                    Old brand. Old logo. Old bottle. The same popular taste and characteristics of:
-                    
-                    Vodka, Vermout and our Sangria-Blend with Cherry, Strawberry, Spices and much more... much more love!
-                    
-                     
-                    ...pssst, stock is selling out fast and will never be produced again in this form, so hurry and get yourself any of our Old but Gold cocktails</p>
+                    Old brand. Old logo. Old bottle. The same popular... <a href="{{ url_for('product_detail', product_id='hot_or_not') }}">Read more</a> </p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/cocktail3.jpg') }}" alt="Cocktail Name" class="product-image hover-image">
+            <img src="{{ url_for('static', filename='images/cocktail33.jpg') }}" alt="Cocktail Name" class="product-image hover-image">
+             <div class="product-description">
+                <h1 class="product-title">What the Melon?! - O.b.G. Edition</h1>
+                <p class="product-info">OLD BUT GOLD EDITION 
+                    This is a special one! Our podium cocktail at the Austrian Bartender Awards.
+                    Old brand. Old logo. Old bottle. The same popular taste and... <a href="{{ url_for('product_detail', product_id='what_the_melon') }}">Read more</a></p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/cocktail4.jpg') }}" alt="Cocktail Name" class="product-image hover-image">
+            <img src="{{ url_for('static', filename='images/cocktail44.jpg') }}" alt="Cocktail Name" class="product-image hover-image">
+             <div class="product-description">
+                <h1 class="product-title">Horny Bae - O.b.G. Edition</h1>
+                <p class="product-info">OLD BUT GOLD EDITION 
+                    This is a special one! Our podium cocktail at the Austrian Bartender Awards.
+                    Old brand. Old logo. Old bottle. The same popular taste and... <a href="{{ url_for('product_detail', product_id='horny_bae') }}">Read more</a></p>
             </div>
         </div>
         <div class="product">
             <img src="{{ url_for('static', filename='images/cocktail5.jpg') }}" alt="Cocktail Name" class="product-image hover-image">
             <img src="{{ url_for('static', filename='images/cocktail55.jpg') }}" alt="Cocktail Name" class="product-image hover-image">
-            <div class="product-description">Brief description of the cocktail.</div>
+             <div class="product-description">
+                <h1 class="product-title">Wet Ginger - O.b.G. Edition</h1>
+                <p class="product-info">OLD BUT GOLD EDITION 
+                    This is a special one! Our podium cocktail at the Austrian Bartender Awards.
+                    Old brand. Old logo. Old bottle. The same popular taste and... <a href="{{ url_for('product_detail', product_id='wet_ginger') }}">Read more</a></p>
+            </div>
         </div>
     </div>
-
-    <!-- Additional product containers as needed -->
+    {% include 'footer.html' %}
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeLogo = document.getElementById('fade-logo');
+            const content = document.querySelector('.content');
+            const hasSeenLogo = sessionStorage.getItem('hasSeenLogo');
+
+            if (!hasSeenLogo) {
+                setTimeout(() => {
+                    fadeLogo.classList.add('hidden');
+                    content.style.display = 'block';
+                    sessionStorage.setItem('hasSeenLogo', 'true');
+                }, 3000); // Adjust the timeout to match the transition duration
+            } else {
+                fadeLogo.style.display = 'none';
+                content.style.display = 'block';
+            }
+        });
+
         document.querySelectorAll('.product').forEach(item => {
             let hoverTimer, initialHoverTimer;
             item.addEventListener('mouseenter', () => {
@@ -87,6 +152,5 @@
             });
         });
     </script>
-    {% include 'footer.html' %}
 </body>
 </html>

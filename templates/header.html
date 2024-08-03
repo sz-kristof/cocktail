@@ -1,10 +1,14 @@
 <header class="top-bar">
-<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <a href="{{ url_for('home') }}" class="logo">Sip Season</a>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <a href="{{ url_for('home') }}" class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Sip Season Logo" class="logo-img">
+    </a>
     <div class="tagline">We're sipping the good life</div>
     <nav>
         <div class="dropdown">
-            <button class="dropbtn">Menu</button>
+            <button class="dropbtn">
+                <img src="{{ url_for('static', filename='images/menublack.png') }}" alt="Menu" class="menu-img">
+            </button>
             <div class="dropdown-content">
                 <a href="{{ url_for('products_route') }}">Products</a>
                 <a href="{{ url_for('aboutus') }}">About Us</a>
@@ -19,7 +23,6 @@
         </div>
     </nav>
 </header>
-
 
 <style>
     body, html {
@@ -40,17 +43,21 @@
     }
 
     .top-bar .logo {
-        font-size: 24px;
         margin-right: auto;
-        color: black;
+    }
+
+    .top-bar .logo .logo-img {
+        height: 70px;
     }
 
     .top-bar .tagline {
-        font-size: 18px;
+        font-size: 20px;
         text-align: center;
         flex: 2;
         margin-left: 350px;
         color: black;
+        font-family: 'Shadows Into Light', sans-serif;
+        font-weight: bold;
     }
 
     .top-bar nav {
@@ -77,17 +84,23 @@
 
     .dropbtn {
         background-color: #ff7799;
-        color: black;
-        padding: 10px;
-        font-size: 16px;
+        padding: 0;
         border: none;
         cursor: pointer;
         border-radius: 5px;
         transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .dropbtn:hover {
         background-color: #ff5566;
+    }
+
+    .menu-img {
+        width: 40px;
+        height: 35px;
     }
 
     .dropdown-content {
@@ -165,4 +178,33 @@
         font-size: 20px;
     }
 
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+        .top-bar {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .top-bar .logo,
+        .top-bar .tagline,
+        .top-bar nav {
+            margin-bottom: 10px;
+        }
+
+        .top-bar .tagline {
+            margin: 10px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .dropdown {
+            bottom: 120px;
+            right: 2px;
+        }
+
+        .dropbtn {
+            top: 10px;
+            right: 20px;
+        }
+    }
 </style>

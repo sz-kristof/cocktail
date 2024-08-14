@@ -1,19 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mail import Mail, Message
-import secrets
 
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)  # Necessary for flash messages
-
-# Configure Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'szerencsi.kristof@gmail.com'
-app.config['MAIL_PASSWORD'] = 'jzbv wjdu mkfp icqw'
-
-mail = Mail(app)
 
 # Sample product data
 products = {
@@ -85,18 +72,6 @@ def product_detail(product_id):
     if not product:
         return 'Product not found', 404
     return render_template('product_detail.html', product=product)
-
-@app.route('/order', methods=['POST'])
-def order():
-    email = request.form['order-email']
-    if email:
-        msg = Message('Order Confirmation', recipients=[email])
-        msg.body = 'Thank you for your order. We will process it shortly.'
-        mail.send(msg)
-        flash('Order email sent successfully!', 'success')
-    else:
-        flash('Failed to send email. Please try again.', 'danger')
-    return redirect(url_for('contacts'))
 
 if __name__ == '__main__':
     app.run(debug=True)

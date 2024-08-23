@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
@@ -92,6 +93,62 @@
         }
         .product-image-container:hover .order-btn {
             display: block;
+        }
+
+                @media (max-width: 768px) {
+                    .content {
+                        padding-top: 0px;
+                        padding-right: 15px;
+                        padding-left: 15px;
+                    }
+                    .product {
+                        margin-bottom: 10px; /* Reduce space between products */
+                        height: 250px; /* Maintain a fixed height */
+                    }
+                    .product-item {
+                        transform: translateX(-10px); /* Shift the product 10px to the left */
+                    }
+                    .product .hover-image {
+                        width: 100%; /* Full width on smaller screens */
+                        height: auto;
+                    }
+                    .product-description {
+                        top: 10%; /* Position from the bottom */
+                        right: 20%; /* Position from the left */
+                        width: 70%; /* Width of the description box */
+                        padding: 20px; /* Padding inside the box */
+                        padding-top: 20px;
+                        font-size: 14px;
+                    }
+                    .product-title {
+                    font-size: 15px; 
+                    }
+                }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding-top: 0px;
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+            .product {
+                margin-bottom: 0px; /* Further reduce space between products */
+                height: 250px; /* Maintain a fixed height */
+            }
+            .product-item {
+                transform: translateX(-10px); /* Shift the product 10px to the left */
+            }
+            .product-description {
+                top: 10%; /* Position from the bottom */
+                right: 20%; /* Position from the left */
+                width: 70%; /* Width of the description box */
+                padding: 20px; /* Padding inside the box */
+                padding-top: 20px;
+                font-size: 14px;
+            }
+            .product-title {
+               font-size: 15px; 
+            }
         }
 
     </style>

@@ -13,9 +13,22 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             overflow-x: hidden;
+            
         }
+        #background-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Ensures bubbles don't interfere with interactions */
+            z-index: 1; /* Place bubbles above the body background */
+        }
+
         .content {
             padding-top: 70px;
+            padding-right: 20px;
+            padding-left: 20px;
             color: #ff7799;
             display: none; /* Initially hide the content */
         }
@@ -32,6 +45,82 @@
         .product-title {
             color: #ff7799;
             font-family: 'Shadows Into Light', sans-serif;
+        }
+
+        .product {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 500px; /* Maintain a fixed height */
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .product-image, .product-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This will cover the area without changing the aspect ratio */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .product-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Hide images initially */
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.2); /* Darkening effect */
+        }
+
+        .product-image.hover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Start with images hidden */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .product-description {
+            position: absolute;
+            bottom: 10%; /* Position from the bottom */
+            left: 10%; /* Position from the left */
+            width: 80%; /* Width of the description box */
+            padding: 20px; /* Padding inside the box */
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+            color: rgb(255, 255, 255); /* Text color */
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern, sans-serif font */
+            font-size: 20px; /* Larger font size for visibility */
+            text-align: center; /* Center-aligned text */
+            opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Move down slightly */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transitions for appearance */
+        }
+
+        .product:hover .product-description {
+            opacity: 1; /* Fully visible on hover */
+            transform: translateY(0); /* Reset position */
+        }
+
+        .product:hover .product-description, .product:hover .product-video {
+            opacity: 1;
+            display: block;
+        }
+        .product:hover .default-image {
+            opacity: 0;
         }
         .fade-logo {
             display: flex;
@@ -52,6 +141,268 @@
             visibility: hidden;
             transition: visibility 0s 1s, opacity 1s ease-in-out;
         }
+/* KEYFRAMES */
+
+@-webkit-keyframes animateBubble {
+    0% {
+        margin-top: 1000px;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
+
+@-moz-keyframes animateBubble {
+    0% {
+        margin-top: 1000px;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
+
+@keyframes animateBubble {
+    0% {
+        margin-top: 1000px;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
+
+@-webkit-keyframes sideWays { 
+    0% { 
+        margin-left:0px;
+    }
+    100% { 
+        margin-left:50px;
+    }
+}
+
+@-moz-keyframes sideWays { 
+    0% { 
+        margin-left:0px;
+    }
+    100% { 
+        margin-left:50px;
+    }
+}
+
+@keyframes sideWays { 
+    0% { 
+        margin-left:0px;
+    }
+    100% { 
+        margin-left:50px;
+    }
+}
+
+/* ANIMATIONS */
+
+.x1 {
+    -webkit-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	
+	left: -5%;
+	top: 5%;
+	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+}
+
+.x2 {
+    -webkit-animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	
+	left: 5%;
+	top: 80%;
+	
+	-webkit-transform: scale(0.4);
+	-moz-transform: scale(0.4);
+	transform: scale(0.4);
+}
+
+.x3 {
+    -webkit-animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	
+	left: 10%;
+	top: 40%;
+	
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	transform: scale(0.7);
+}
+
+.x4 {
+    -webkit-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+	animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+	
+	left: 20%;
+	top: 0;
+	
+	-webkit-transform: scale(0.3);
+	-moz-transform: scale(0.3);
+	transform: scale(0.3);
+}
+
+.x5 {
+    -webkit-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	
+	left: 30%;
+	top: 50%;
+	
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	transform: scale(0.5);
+}
+
+.x6 {
+    -webkit-animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	
+	left: 50%;
+	top: 0;
+	
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+}
+
+.x7 {
+    -webkit-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	
+	left: 65%;
+	top: 70%;
+	
+	-webkit-transform: scale(0.4);
+	-moz-transform: scale(0.4);
+	transform: scale(0.4);
+}
+
+.x8 {
+    -webkit-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+	animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+	
+	left: 80%;
+	top: 10%;
+	
+	-webkit-transform: scale(0.3);
+	-moz-transform: scale(0.3);
+	transform: scale(0.3);
+}
+
+.x9 {
+    -webkit-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+	
+	left: 90%;
+	top: 50%;
+	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+}
+
+.x10 {
+    -webkit-animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	-moz-animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
+	
+	left: 80%;
+	top: 80%;
+	
+	-webkit-transform: scale(0.3);
+	-moz-transform: scale(0.3);
+	transform: scale(0.3);
+}
+
+/* OBJECTS */
+
+.bubble {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 105, 180, 0.8); /* More vibrant pink */
+    border-radius: 50%;
+    -webkit-box-shadow: 0 20px 30px rgba(255, 182, 193, 0.4), inset 0px 10px 30px 5px rgba(255, 255, 255, 0.7);
+    -moz-box-shadow: 0 20px 30px rgba(255, 182, 193, 0.4), inset 0px 10px 30px 5px rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 30px rgba(255, 182, 193, 0.4), inset 0px 10px 30px 5px rgba(255, 255, 255, 0.7);
+    z-index: 2; /* Ensure they are above other elements for interaction */
+    transition: transform 0.3s ease;
+}
+        @media (max-width: 768px) {
+                    .content {
+                        padding-top: 0px;
+                        padding-right: 15px;
+                        padding-left: 15px;
+                    }
+                    .product {
+                        margin-bottom: 10px; /* Reduce space between products */
+                        height: 250px; /* Maintain a fixed height */
+                    }
+                    .product-item {
+                        margin-bottom: 0px; /* Further reduce space between products */
+                        height: 250px; /* Maintain a fixed height */
+                        transform: translateX(-50px); /* Shift the product 10px to the left */
+                    }
+                    .product .hover-image {
+                        width: 100%; /* Full width on smaller screens */
+                        height: auto;
+                    }
+                    .product-description {
+                        top: 10%; /* Position from the bottom */
+                        right: 20%; /* Position from the left */
+                        width: 70%; /* Width of the description box */
+                        padding: 20px; /* Padding inside the box */
+                        padding-top: 20px;
+                        font-size: 14px;
+                    }
+                    .product-title {
+                    font-size: 15px; 
+                    }
+                }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding-top: 0px;
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+            .product {
+                margin-bottom: 0px; /* Further reduce space between products */
+                height: 250px; /* Maintain a fixed height */
+            }
+            .product-item {
+                margin-bottom: 0px; /* Further reduce space between products */
+                height: 250px; /* Maintain a fixed height */
+                transform: translateX(-50px); /* Shift the product 10px to the left */
+            }
+            .product-description {
+                top: 10%; /* Position from the bottom */
+                right: 20%; /* Position from the left */
+                width: 70%; /* Width of the description box */
+                padding: 20px; /* Padding inside the box */
+                padding-top: 20px;
+                font-size: 14px;
+            }
+            .product-title {
+               font-size: 15px; 
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -152,5 +503,17 @@
             });
         });
     </script>
+    <div id="background-wrap">
+    <div class="bubble x1"></div>
+    <div class="bubble x2"></div>
+    <div class="bubble x3"></div>
+    <div class="bubble x4"></div>
+    <div class="bubble x5"></div>
+    <div class="bubble x6"></div>
+    <div class="bubble x7"></div>
+    <div class="bubble x8"></div>
+    <div class="bubble x9"></div>
+    <div class="bubble x10"></div>
+</div>
 </body>
 </html>

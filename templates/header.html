@@ -40,14 +40,16 @@
         background-color: #ff7799;
         color: #fff;
         padding: 10px 20px;
+        height: 50px;
     }
 
     .top-bar .logo {
         margin-right: auto;
+        margin-top: auto;
     }
 
     .top-bar .logo .logo-img {
-        height: 70px;
+        height: 50px;
     }
 
     .top-bar .tagline {
@@ -181,11 +183,12 @@
     /* Mobile responsiveness */
     @media (max-width: 600px) {
         .top-bar {
-            flex-direction: column;
-            align-items: center;
+            height: 30px;
+        }
+        .top-bar .logo .logo-img {
+            height: 30px;
         }
 
-        .top-bar .logo,
         .top-bar .tagline,
         .top-bar nav {
             margin-bottom: 10px;
@@ -193,18 +196,28 @@
 
         .top-bar .tagline {
             margin: 10px 0;
-            font-size: 18px;
-            text-align: center;
+            font-size: 12px;
+            position: relative;
+            display: inline-block;
+            margin-top: 8px;
+            margin-right: -60px;
         }
 
         .dropdown {
-            bottom: 120px;
-            right: 2px;
+            position: relative;
+            display: inline-block;
         }
 
         .dropbtn {
-            top: 10px;
+            margin-top: 8px;
+            margin-right: -10px;
+            top: 15px;
             right: 20px;
+        }
+
+        .menu-img {
+            width: 30px; /* Smaller width for mobile */
+            height: 25px; /* Smaller height for mobile */
         }
     }
 </style>

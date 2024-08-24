@@ -7,42 +7,42 @@ products = {
     'hot_or_not': {
         'name': 'Hot or Not?!',
         'description': 'This is a special one! Our podium cocktail at the Austrian Bartender Awards. Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Vodka, Vermout and our Sangria-Blend with Cherry, Strawberry, Spices and much more... much more love! ...pssst, stock is selling out fast and will never be produced again in this form, so hurry and get yourself any of our Old but Gold cocktails.',
-        'image': 'images/cocktail2.jpg'
+        'images': ['images/cocktail2.jpg', 'images/cocktail22.jpg']
     },
     'what_the_melon': {
         'name': 'What the Melon?! ',
         'description': 'Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Vodka, Watermelon, Lime, Mint.',
-        'image': 'images/cocktail3.jpg'
+        'images': ['images/cocktail3.jpg', 'images/cocktail33.jpg']
     },
     'horny_bae': {
         'name': 'Horny Bae',
         'description': 'Old brand. Old logo. Old bottle. The same popular taste and characteristics of: White Rum, Cucumber, Pineapple, Almond, Melon.',
-        'image': 'images/cocktail4.jpg'
+        'images': ['images/cocktail4.jpg', 'images/cocktail44.jpg']
     },
     'wet_ginger': {
         'name': 'Wet Ginger',
         'description': 'Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Gin, Ginger, Lemon, Cucumber, Pink Pepper.',
-        'image': 'images/cocktail5.jpg'
+        'images': ['images/cocktail5.jpg', 'images/cocktail55.jpg']
     },
     'hot_or_not_obg': {
         'name': 'Hot or Not?! O.b.g Edition',
         'description': 'This is a special one! Our podium cocktail at the Austrian Bartender Awards. Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Vodka, Vermout and our Sangria-Blend with Cherry, Strawberry, Spices and much more... much more love! ...pssst, stock is selling out fast and will never be produced again in this form, so hurry and get yourself any of our Old but Gold cocktails.',
-        'image': 'images/hotornotobg.jpg'
+        'images': ['images/hotornotobg.jpg', 'images/hotornotobg2.jpg']
     },
     'what_the_melon_obg': {
         'name': 'What the Melon?! O.b.g Edition',
         'description': 'Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Vodka, Watermelon, Lime, Mint.',
-        'image': 'images/whatthemelonobg.jpg'
+        'images': ['images/whatthemelonobg.jpg', 'images/whatthemelonobg2.jpg']
     },
     'horny_bae_obg': {
         'name': 'Horny Bae O.b.g Edition',
         'description': 'Old brand. Old logo. Old bottle. The same popular taste and characteristics of: White Rum, Cucumber, Pineapple, Almond, Melon.',
-        'image': 'images/hornybaeobg.jpg'
+        'images': ['images/hornybaeobg.jpg', 'images/hornybaeobg2.jpg']
     },
     'wet_ginger_obg': {
         'name': 'Wet Ginger O.b.g Edition',
         'description': 'Old brand. Old logo. Old bottle. The same popular taste and characteristics of: Gin, Ginger, Lemon, Cucumber, Pink Pepper.',
-        'image': 'images/wetgingerobg.jpg'
+        'images': ['images/wetgingerobg.jpg', 'images/wetgingerobg2.jpg']
     }
 }
 

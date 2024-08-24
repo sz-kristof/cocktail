@@ -7,67 +7,115 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-        }
-        .content {
-            padding: 20px;
-        }
-        .product-detail {
-            background-color: #ff7799;
-            border: 1px solid black;
-            border-radius: 10px;
-            overflow: hidden;
-            padding: 20px;
-            text-align: left;
-            color: black;
-            font-family: 'Shadows Into Light', sans-serif;
-        }
-        .product-detail img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .product-detail h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: black;
-            font-family: 'Shadows Into Light', sans-serif;
-        }
-        .product-detail p {
-            font-size: 16px;
-            line-height: 1.5;
-            color: black;
-        }
-        .order-btn {
-            background-color: black;
-            color: #ff7799;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            display: inline-block;
-            margin-top: 20px;
-        }
-        .order-btn:hover {
-            background-color: #333;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.content {
+    padding: 20px;
+}
+
+.product-detail {
+    background-color: #ff7799;
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    text-align: left;
+    color: black;
+    font-family: 'Shadows Into Light', sans-serif;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: none;
+}
+
+.image-container img.active {
+    display: block;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .arrow {
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+    }
+    
+    .product-detail h2 {
+        font-size: 20px;
+    }
+    
+    .product-detail p {
+        font-size: 14px;
+    }
+}
+
     </style>
 </head>
 <body>
     {% include 'header.html' %}
     <div class="content">
-        <div class="product-detail">
-            <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
-            <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
+    <div class="product-detail">
+        <div class="image-container">
+            {% for image in product.images %}
+                <img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }}" class="{% if loop.first %}active{% endif %}">
+            {% endfor %}
+            <span class="arrow left" onclick="changeImage(-1)">&#10094;</span>
+            <span class="arrow right" onclick="changeImage(1)">&#10095;</span>
         </div>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
     </div>
+</div>
+
     {% include 'footer.html' %}
+
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.product-detail img');
+
+        function changeImage(direction) {
+            images[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            images[currentImageIndex].classList.add('active');
+        }
+    </script>
 </body>
 </html>

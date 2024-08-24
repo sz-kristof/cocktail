@@ -161,7 +161,7 @@
             {% for product_id, product in products.items() %}
             <div class="product-item">
                 <div class="product-image-container">
-                    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+                    <img src="{{ url_for('static', filename=product.images[0]) }}" alt="{{ product.name }}">
                     <a href="{{ url_for('contacts') }}" class="order-btn">Order now!</a>
                 </div>
                 <div class="product-description">

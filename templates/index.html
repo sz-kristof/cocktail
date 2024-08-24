@@ -30,7 +30,6 @@
             padding-right: 20px;
             padding-left: 20px;
             color: #ff7799;
-            display: none; /* Initially hide the content */
         }
         .hover-image {
             display: none;
@@ -125,24 +124,27 @@
             opacity: 0;
         }
         .fade-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100%;
-            background-color: #ff7799;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            opacity: 1;
-            transition: opacity 1s ease-in-out;
+        display: flex;
+        height: 80vh;
+        width: 60%;
+        position: fixed;
+        margin-top: 50px;
+        margin-left: 250px;
+        z-index: 1000; /* A logó a legfelső rétegben marad */
+        opacity: 1;
+        background-color: transparent; /* A logó mögötti háttér átlátszó marad */
+        transition: opacity 1s ease-in-out, visibility 0s linear 1s;
         }
+
         .fade-logo.hidden {
             opacity: 0;
-            visibility: hidden;
-            transition: visibility 0s 1s, opacity 1s ease-in-out;
+            visibility: hidden; /* Eltüntetjük a logót, miután eltűnt */
         }
+
+        .content {
+            opacity: 1; /* A tartalom mindig látható */
+        }
+
 /* KEYFRAMES */
 
 @-webkit-keyframes animateBubble {
@@ -375,6 +377,16 @@
                     .product-title {
                     font-size: 15px; 
                     }
+                    .fade-logo {
+                        height: 30vh;
+                        position: absolute;
+                        margin-top: 250px;
+                        margin-left: 25px;
+                    }
+
+                    .fade-logo img {
+                        max-width: 150%; /* Még kisebb kijelzőn kisebb méret */
+                    }
                 }
         
         @media (max-width: 480px) {
@@ -403,13 +415,23 @@
             .product-title {
                font-size: 15px; 
             }
+            fade-logo {
+                height: 30vh;
+                position: absolute;
+                margin-top: 250px;
+                margin-left: 25px;
+                height: 100vh;
+            }
+            .fade-logo img {
+                max-width: 150%; /* Legkisebb kijelzőn a logó még kisebb méretű lesz */
+            }
         }
 
     </style>
 </head>
 <body>
     <div class="fade-logo" id="fade-logo">
-        <img src="{{ url_for('static', filename='images/cocktail.jpg') }}" alt="Logo">
+        <img src="{{ url_for('static', filename='images/fadelogo.png') }}" alt="Logo">
     </div>
     {% include 'header.html' %}
     <div class="content">
@@ -464,15 +486,12 @@
             if (!hasSeenLogo) {
                 setTimeout(() => {
                     fadeLogo.classList.add('hidden');
-                    content.style.display = 'block';
                     sessionStorage.setItem('hasSeenLogo', 'true');
-                }, 3000); // Adjust the timeout to match the transition duration
+                }, 3000); // A logó 3 másodpercig látható, majd eltűnik
             } else {
                 fadeLogo.style.display = 'none';
-                content.style.display = 'block';
             }
         });
-
         document.querySelectorAll('.product').forEach(item => {
             let hoverTimer, initialHoverTimer;
             item.addEventListener('mouseenter', () => {
